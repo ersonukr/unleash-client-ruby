@@ -72,7 +72,7 @@ module Unleash
     end
 
     def url_stripped_of_slash
-      self.url.delete_suffix '/'
+      self.url.chomp '/'
     end
 
     def use_bootstrap?

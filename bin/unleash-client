@@ -50,7 +50,7 @@ OptionParser.new do |opts|
 
   opts.on("-H", "--http-headers='Authorization: *:developement.secretstring'",
           "Adds http headers to all requests on the unleash server. Use multiple times for multiple headers.") do |h|
-    http_header_as_hash = [h].to_h{ |l| l.split(": ") }.transform_keys(&:to_sym)
+    http_header_as_hash = [h].to_h{ |l| l.split(": ") }.inject({}){|memo,(k,v)| memo[k.to_sym] = v; memo}
 
     options[:custom_http_headers].merge!(http_header_as_hash)
   end
@@ -83,7 +83,7 @@ log_level = \
   log_level: log_level
 )
 
-context_params = ARGV.to_h{ |l| l.split("=") }.transform_keys(&:to_sym)
+context_params = ARGV.to_h{ |l| l.split("=") }.inject({}){|memo,(k,v)| memo[k.to_sym] = v; memo}
 context_properties = context_params.reject{ |k, _v| [:user_id, :session_id, :remote_address].include? k }
 context_params.select!{ |k, _v| [:user_id, :session_id, :remote_address].include? k }
 context_params.merge!(properties: context_properties) unless context_properties.nil?

@@ -15,7 +15,7 @@ module Unleash
       self.current_time = value_for('currentTime', params, Time.now.utc.iso8601.to_s)
 
       properties = value_for('properties', params)
-      self.properties = properties.is_a?(Hash) ? properties.transform_keys(&:to_sym) : {}
+      self.properties = properties.is_a?(Hash) ? properties.inject({}){|memo,(k,v)| memo[k.to_sym] = v; memo} : {}
     end
 
     def to_s

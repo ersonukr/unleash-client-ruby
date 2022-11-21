@@ -21,17 +21,17 @@ Gem::Specification.new do |spec|
   spec.bindir        = 'bin'
   spec.executables   = spec.files.grep(%r{^bin/unleash}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
-  spec.required_ruby_version = ">= 2.5"
+  spec.required_ruby_version = ">= 2.3"
 
   spec.add_dependency "murmurhash3", "~> 0.1.6"
 
-  spec.add_development_dependency "bundler", "~> 2.1"
+  spec.add_development_dependency "bundler", "~> 1.17"
   spec.add_development_dependency "rake", "~> 12.3"
   spec.add_development_dependency "rspec", "~> 3.9"
   spec.add_development_dependency "rspec-json_expectations", "~> 2.2"
   spec.add_development_dependency "webmock", "~> 3.8"
 
-  spec.add_development_dependency "rubocop", "~> 1.28.2"
-  spec.add_development_dependency "simplecov", "~> 0.21.2"
-  spec.add_development_dependency "simplecov-lcov", "~> 0.8.0"
+  spec.add_development_dependency "rubocop", "~> 0.80.1"
+  spec.add_development_dependency "simplecov", "~> 0.17.0"
+  spec.add_development_dependency "simplecov-lcov", "~> 0.7.0"
 end
